@@ -136,12 +136,10 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      if (this.pullDownRefresh) {
-        setTimeout(() => {
-          this.$refs.scrollH.style.minHeight = `${(this.$refs.wrapper.offsetHeight + 1)}px`
-          this.scroll.refresh()
-        }, 100)
-      }
+      setTimeout(() => {
+        this.$refs.scrollH.style.minHeight = `${(this.$refs.wrapper.offsetHeight + 1)}px`
+        this.scroll.refresh()
+      }, 100)
       if (!this.scroll) {
         const pullDownRefresh = this.pullDownRefresh
           ? {

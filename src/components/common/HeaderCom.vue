@@ -57,7 +57,7 @@ export default {
 
 <style lang = "less">
 .co-header {
-  background: #d81e06 !important;
+  background: rgb(72, 137, 219) !important;
   .headSlide{
     min-width:4rem
   }

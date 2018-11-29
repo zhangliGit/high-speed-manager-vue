@@ -1,21 +1,14 @@
 <template>
-  <div class="co-f1 co-flex co-ver co-cl-1">
-    <header-com isBacPortal :title="title"></header-com>
+  <div class="co-f1 co-flex co-ver co-cl-1 index-cls">
+    <header-com :title="title"></header-com>
     <!--pullDownRefresh pullUpLoad 这两个属性表示有上拉加载和 下拉刷新-->
-    <scroll-list ref="scroll">
-      <div class="co-bg-0">
-        <div class="co-pd-a08 co-bd-b" @click="goDetail">
-          我的应用列表
-        </div>
-        <div class="co-pd-a08 co-bd-b co-flex co-ac" @click="goDetail">
-            我的应用列表
-        </div>
-      </div>
-    </scroll-list>
-    <div id="co-footer" class="co-bg-0 co-bd-t co-flex co-ac co-fs-01 co-cl-1">
-      <div v-for="(item, index) in footer" :key="index" :class="['co-f1 co-flex co-ver co-ac co-jc',{'co-cl-4': current == index}]">
-        <i :class="`coicon ${item.icon} co-fs-4`"></i>
-        <div>{{item.title}}</div>
+    <div class="co-f1 co-flex">
+      <component :is = "currentIndex"></component>
+    </div>
+    <div id="co-footer" class="co-bg-0 co-bd-t co-flex co-ac co-fs-01 co-cl-1" style = "rgb(131, 131, 131)">
+      <div @click="changeMenu(index)" v-for="(item, index) in footer" :key="index" :class="['co-f1 co-flex co-ver co-ac co-jc',{'current-active': current == index}]">
+        <i :class="`icon iconfont ${item.icon} co-fs-3`"></i>
+        <div class="co-fs-01">{{item.title}}</div>
       </div>
     </div>
   </div>
@@ -24,6 +17,10 @@
 <script>
 import HeaderCom from '@c/HeaderCom'
 import ScrollList from '@c/ScrollList'
+import Ticket from './ticket/ticket.vue'
+import Trip from './ticket/Trip.vue'
+import Service from './ticket/Service.vue'
+import Person from './ticket/person.vue'
 export default {
   name: 'index',
   components: {
@@ -32,19 +29,25 @@ export default {
   },
   data () {
     return {
-      title: '首页',
+      title: '车票预订',
+      comList: [Ticket, Trip, Service, Person],
+      currentIndex: Ticket,
       current: 0,
       footer: [
         {
-          icon: 'coicon-homepage',
-          title: '首页'
+          icon: "icon-huoche",
+          title: '车票预定'
         },
         {
-          icon: 'coicon-manage',
-          title: '应用'
+          icon: "icon-lishihangcheng",
+          title: '我的行程'
         },
         {
-          icon: 'coicon-mine',
+          icon: "icon-lvxingxiang",
+          title: '旅行服务'
+        },
+        {
+          icon: "icon-geren",
           title: '个人中心'
         }
       ]
@@ -53,6 +56,10 @@ export default {
   computed: {
   },
   methods: {
+    changeMenu(index) {
+      this.current = index;
+      this.currentIndex = this.comList[index]
+    },
     goDetail () {
       this.$router.push({name: 'detail'})
     }
@@ -61,11 +68,10 @@ export default {
 }
 </script>
 
-<style scoped>
-  .div-img {
-    width: 100px;
-    height: 100px;
-    margin-right: 10px;
-    background: red;
+<style scoped lang = "less">
+  .index-cls {
+    .current-active {
+      color: #4889db
+    }
   }
 </style>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '../views/index.vue'
-const detail = (resolve) => { require(['../views/detail.vue'], resolve) }
+const ticketList = (resolve) => { require(['../views/ticket/ticketList.vue'], resolve) }
 Vue.use(Router)
 Router.prototype.goBack = function () {
   this.isBack = true
@@ -16,9 +16,9 @@ export default new Router({
       component: index
     },
     {
-      path: '/detail',
-      name: 'detail',
-      component: detail
+      path: '/ticketList',
+      name: 'ticketList',
+      component: ticketList
     }
   ]
 })
