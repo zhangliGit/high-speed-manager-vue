@@ -1,18 +1,24 @@
-import $ajax from '@a/js/ajax-service.js'
+
+import TICKET_ACTIONS from './actions/ticket'
 
 const TICKET = {
+  namespaced: true,
   state: {
-    ticketList: []
-  },
-  actions: {
-    /**
-    * @description 获取火车票列表
-    */
-    getTicketList ({ commit, state }, obj) {
-      
+    ticketList: [],
+    ticketDetail: {
+      ticket: []
     }
   },
+  actions: {
+    ...TICKET_ACTIONS
+  },
   mutations: {
+    setTicketList (state, data) {
+      state.ticketList = data
+    },
+    setTicketDetail (state, data) {
+      state.ticketDetail = data
+    }
   }
 }
 export default TICKET

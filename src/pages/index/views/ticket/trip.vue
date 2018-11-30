@@ -12,16 +12,16 @@
       <div>
         <div v-for = "(item, index) in tripList"  :key = "index" class = "co-flex co-pd-a06 co-bg-0 co-bd-b co-of">
           <div >
-            <img src = { item.picUrl } style = "width: 5rem; height: 4rem; background: #444"  alt = "" />
+            <img :src = "item.picUrl" style = "width: 5rem; height: 4rem; background: #444"  alt = "" />
           </div>
           <div class = "co-f1 co-mg-l06 co-flex co-ver co-jsb">
-            <div class = "co-te2" style = "color: #333">{{ item.title }}</div>
-            <div class = "co-flex co-te co-ac co-cl-2 co-fs-01">{{ item.levelTitle }}</div>
+            <div class = "co-te" style = "color: #333">{{ item.title }}</div>
+            <div class = "co-flex co-te co-te co-ac co-cl-2 co-fs-01">{{ item.levelTitle }}</div>
             <div class = "co-flex co-jsb co-ac co-fs-01">
               <div class="tip">{{ item.type }}</div>
               <div class = "co-flex co-ac" style = "color: #c3c3c3">
                 <div><i class = "icon iconfont icon-yanjing co-fs-1"></i></div>
-                <div style = "margin: 3px 3px 0">{ item.watch }</div>
+                <div style = "margin: 3px 3px 0">{{ item.watch }}</div>
               </div>
             </div>
           </div>
@@ -37,6 +37,7 @@ import skb from '../../assets/images/skb.png'
 import cxdc from '../../assets/images/cxdc.png'
 import gtywb from '../../assets/images/gtywb.png'
 import czdp from '../../assets/images/czdp.png'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Trip',
   components: {
@@ -67,11 +68,20 @@ export default {
     }
   },
   computed: {
+    ...mapState('TRIP', [
+      'tripList'
+    ])
   },
   methods: {
+    ...mapActions('TRIP', [
+      'getTripList'
+    ]),
     goDetail () {
       this.$router.push({name: 'detail'})
     }
+  },
+  mounted() {
+    this.getTripList();
   },
   
 }
@@ -89,7 +99,7 @@ export default {
       border-radius: 3px;
       border: 1px #7ed321 solid;
       color: #7ed321;
-      font-size: 10px;
+      font-size: 12px;
       transform: scale(.9);
     }
   }

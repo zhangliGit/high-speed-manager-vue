@@ -29,7 +29,7 @@
           </div>
           <div>学生</div>
         </div>
-        <div class = "co-pd-a06 co-br-a0 co-f1 co-tx-c co-cl-0" style = "background: #4889db">搜索</div>
+        <div @click = "searchList" class = "co-pd-a06 co-br-a0 co-f1 co-tx-c co-cl-0" style = "background: #4889db">搜索</div>
       </div>
       <div class = "co-mg-t04 co-bg-0 co-pd-tb02 co-flex co-cl-1 co-jc co-pd-r04">
         <div v-for = "(item, index) in menuList" :key = "index" class = "co-f1 co-flex co-ver co-ac co-jc co-mg-l04 co-pd-tb04" style = "background: #f8fbff">
@@ -151,7 +151,10 @@ export default {
   },
   methods: {
     goDetail () {
-      this.$router.push({name: 'detail'})
+      this.$router.push({name: 'detail'});
+    },
+    searchList () {
+      this.$router.push('/ticketList');
     }
   },
   

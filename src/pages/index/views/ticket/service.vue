@@ -1,11 +1,26 @@
 <template>
   <scroll-list ref="scroll">
     <div class="service">
-      <div class="co-pd-a08 co-bd-b" @click="goDetail">
-        我的应用列表
+      <div class = "co-pd-a06 co-bd-b">出行服务</div>
+      <div class = "co-flex co-pd-tb06">
+        <div :key = "index" v-for = "(item, index) in serList" class = "co-f1 co-flex co-ver co-ac co-jc">
+          <div>
+            <img :src = "item.icon" style = "width: 34px; height: 34px; display: block"  alt = "" />
+          </div>
+          <div class = "co-cl-1 co-fs-01 co-mg-t04">{{ item.title }}</div>
+          <div class = "co-fs-02 co-cl-2 co-mg-t02" style = "transform: scale(.9)">{{ item.tip }}</div>
+        </div>
       </div>
-      <div class="co-pd-a08 co-bd-b co-flex co-ac" @click="goDetail">
-          我的应用列表
+      <div class = "co-bg-0 co-mg-t06">
+        <div class = "co-pd-a06 co-bd-b">管家自营</div>
+        <div class = "co-pd-tb08 co-of">
+          <div :key = "index" v-for = "(item, index) in manList" class = "co-flex co-ver co-ac co-jc tab-list">
+            <div>
+            <img :src = "item.icon" style = "width: 32px; height: 32px; display: block"  alt = "" />
+            </div>
+            <div class = "co-mg-t04 co-fs-01 co-cl-1">{{item.title}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </scroll-list>
@@ -13,6 +28,15 @@
 
 <script>
 import ScrollList from '@c/ScrollList'
+import jdydIcon from '@a/images/jdydIcon.png'
+import hbdtIcon from '@a/images/hbdtIcon.png'
+import qyfwIcon from '@a/images/qyfwIcon.png'
+import cxzbIcon from '@a/images/cxzbIcon.png'
+import jfdhIcon from '@a/images/jfdhIcon.png'
+import hcdcIcon from '@a/images/hcdcIcon.png'
+import cjyIcon from '@a/images/cjyIcon.png'
+import flzxIcon from '@a/images/flzxIcon.png'
+import xykIcon from '@a/images/xykIcon.png'
 export default {
   name: 'Service',
   components: {
@@ -20,24 +44,48 @@ export default {
   },
   data () {
     return {
-      title: '首页',
-      current: 0,
-      footer: [
+      title: '旅行服务',
+      serList: [
         {
-          icon: "icon-huoche",
-          title: '车票预定'
+          title: '酒店预订',
+          tip: '收单送50',
+          icon: jdydIcon
         },
         {
-          icon: "icon-lishihangcheng",
-          title: '我的行程'
+          title: '航班动态',
+          tip: '延误提醒',
+          icon: hbdtIcon
         },
         {
-          icon: "icon-lvxingxiang",
-          title: '旅行服务'
+          title: '企业服务',
+          tip: '高效便捷',
+          icon: qyfwIcon
+        }
+      ],
+      manList: [
+        {
+          title: '出行装备',
+          icon: cxzbIcon
         },
         {
-          icon: "icon-geren",
-          title: '个人中心'
+          title: '积分兑换',
+          icon: jfdhIcon
+        },
+        {
+          title: '火车订餐',
+          icon: hcdcIcon
+        },
+        {
+          title: '出境游',
+          icon: cjyIcon
+        },
+        {
+          title: '福利中心',
+          icon: flzxIcon
+        },
+        {
+          title: '信用卡',
+          icon: xykIcon
         }
       ]
     }
@@ -54,10 +102,11 @@ export default {
 </script>
 
 <style scoped lang = "less">
-  .div-img {
-    width: 100px;
-    height: 100px;
-    margin-right: 10px;
-    background: red;
+  .service {
+    .tab-list {
+      float: left;
+      width: 33.33%;
+      padding: .5rem 0
+    }
   }
 </style>

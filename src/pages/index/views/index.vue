@@ -1,9 +1,11 @@
 <template>
   <div class="co-f1 co-flex co-ver co-cl-1 index-cls">
-    <header-com :title="title"></header-com>
+    <header-com v-if = "current !== 3" :title="titleList[current]"></header-com>
     <!--pullDownRefresh pullUpLoad 这两个属性表示有上拉加载和 下拉刷新-->
     <div class="co-f1 co-flex">
-      <component :is = "currentIndex"></component>
+      <keep-alive>
+        <component :is = "currentIndex"></component>
+      </keep-alive>
     </div>
     <div id="co-footer" class="co-bg-0 co-bd-t co-flex co-ac co-fs-01 co-cl-1" style = "rgb(131, 131, 131)">
       <div @click="changeMenu(index)" v-for="(item, index) in footer" :key="index" :class="['co-f1 co-flex co-ver co-ac co-jc',{'current-active': current == index}]">
@@ -29,7 +31,7 @@ export default {
   },
   data () {
     return {
-      title: '车票预订',
+      titleList: ['车牌预定', '我的行程', '旅行服务', '个人中心'],
       comList: [Ticket, Trip, Service, Person],
       currentIndex: Ticket,
       current: 0,
@@ -58,7 +60,7 @@ export default {
   methods: {
     changeMenu(index) {
       this.current = index;
-      this.currentIndex = this.comList[index]
+      this.currentIndex = this.comList[index];
     },
     goDetail () {
       this.$router.push({name: 'detail'})
