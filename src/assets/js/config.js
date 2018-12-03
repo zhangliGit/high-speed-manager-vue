@@ -15,8 +15,15 @@ const TRIP_API = {
   trip_new_list: `${HOST_URL}tripNews`
 }
 
+/**
+ * 个人中心
+ */
+const PERSON_API = {
+  rider_list: `${HOST_URL}riderList`
+}
 const API_LIST = {
   ...TICKET_API,
-  ...TRIP_API
+  ...TRIP_API,
+  ...PERSON_API
 }
 export default API_LIST

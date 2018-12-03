@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class = "co-flex co-ac co-pd-tb08 co-bg-0">
-        <div :key = "index" v-for = "(item, index) in menuList" class = "co-f1 co-flex co-ver co-ac co-jc">
+        <div @click="goMenu(item.path)" :key = "index" v-for = "(item, index) in menuList" class = "co-f1 co-flex co-ver co-ac co-jc">
           <div>
             <img :src = "item.icon" style = "width: 32px; height: 32px; display: block"  alt = "" />
           </div>
@@ -122,19 +122,23 @@ export default {
       menuList: [
         {
           title: '钱包',
-          icon: qbIcon
+          icon: qbIcon,
+          path: '/riderList'
         },
         {
           title: '乘车人',
-          icon: ccrIcon
+          icon: ccrIcon,
+          path: '/riderList'
         },
         {
           title: '我的点评',
-          icon: wddpIcon
+          icon: wddpIcon,
+          path: '/riderList'
         },
         {
           title: '好友',
-          icon: hyIcon
+          icon: hyIcon,
+          path: '/riderList'
         }
       ],
       orderList: [
@@ -186,8 +190,8 @@ export default {
   computed: {
   },
   methods: {
-    goDetail () {
-      this.$router.push({name: 'detail'})
+    goMenu (path) {
+      this.$router.push({path: path});
     }
   },
 }

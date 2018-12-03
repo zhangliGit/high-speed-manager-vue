@@ -67,13 +67,7 @@ export default {
     tabCurrent (index) {
     },
     goDetail (id) {
-      this.$router.push(`/ticketDetail`);
-      this.$router.push({
-        path: '/ticketDetail',
-        query: {
-          id: id
-        }
-      })
+      this.$router.push(`/ticketDetail/100`);
     }
   },
   mounted() {

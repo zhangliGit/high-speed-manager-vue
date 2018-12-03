@@ -7,8 +7,8 @@
         <component :is = "currentIndex"></component>
       </keep-alive>
     </div>
-    <div id="co-footer" class="co-bg-0 co-bd-t co-flex co-ac co-fs-01 co-cl-1" style = "rgb(131, 131, 131)">
-      <div @click="changeMenu(index)" v-for="(item, index) in footer" :key="index" :class="['co-f1 co-flex co-ver co-ac co-jc',{'current-active': current == index}]">
+    <div id="co-footer" class="co-bg-0 co-bd-t co-flex co-ac co-fs-01 co-cl-1" style = "color: rgb(131, 131, 131)">
+      <div @click="changeMenu(index)" v-for="(item, index) in footer" :key="index" :class="['co-f1 co-flex co-ver co-ac co-jc',{'current-active menu-scale': current == index}]">
         <i :class="`icon iconfont ${item.icon} co-fs-3`"></i>
         <div class="co-fs-01">{{item.title}}</div>
       </div>
@@ -66,7 +66,6 @@ export default {
       this.$router.push({name: 'detail'})
     }
   },
-  
 }
 </script>
 
@@ -74,6 +73,21 @@ export default {
   .index-cls {
     .current-active {
       color: #4889db
+    }
+    .menu-scale {
+      animation: mymove .3s linear;
+    }
+    @keyframes mymove
+      {
+      0% {
+        transform: scale(1)
+      }
+      50% {
+        transform: scale(.8)
+      }
+      100% {
+        transform: scale(1)
+      }
     }
   }
 </style>

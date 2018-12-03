@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper co-f1 co-of " ref="wrapper">
+  <div class="wrapper co-f1 co-of" ref="wrapper">
     <div ref = "scrollH">
       <div v-show = "isFail" class="fail-dialog co-flex co-ver co-ac co-jc">
         <div>
@@ -231,6 +231,9 @@ export default {
 </script>
 
 <style lang = "less">
+.wrapper {
+  background: "#f5f5f5"
+}
 .fail-dialog {
   padding-top: 3rem;
   width: 100%;
