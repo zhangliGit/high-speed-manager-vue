@@ -11,12 +11,12 @@
       </div>
       <div>
         <div v-for = "(item, index) in tripList"  :key = "index" class = "co-flex co-pd-a06 co-bg-0 co-bd-b co-of">
-          <div >
-            <img :src = "item.picUrl" style = "width: 5rem; height: 4rem; background: #444"  alt = "" />
+          <div style="width: 5rem; height: 4rem;">
+            <img v-lazy="item.picUrl" style = "width: 5rem; height: 4rem; display:block"  alt = "" >
           </div>
           <div class = "co-f1 co-mg-l06 co-flex co-ver co-jsb">
-            <div class = "co-te" style = "color: #333">{{ item.title }}</div>
-            <div class = "co-flex co-te co-te co-ac co-cl-2 co-fs-01">{{ item.levelTitle }}</div>
+            <div class = "co-te2" style = "color: #333; -webkit-box-origin: vertical; box-origin: vertical">{{ item.title }}</div>
+            <div class = "co-flex co-te co-te co-ac co-cl-2 co-fs-01"  style = "-webkit-box-origin: vertical; box-origin: vertical">{{ item.levelTitle }}</div>
             <div class = "co-flex co-jsb co-ac co-fs-01">
               <div class="tip">{{ item.type }}</div>
               <div class = "co-flex co-ac" style = "color: #c3c3c3">

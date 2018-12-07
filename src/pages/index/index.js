@@ -5,7 +5,13 @@ import App from './App'
 import router from './router'
 import $ajax from '../../assets/js/ajax-service.js'
 import store from './store/index.js'
+import VueLazyload from 'vue-lazyload'
 import { corJs, corNative, corPlugin } from 'corlib'
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: require('../../assets/images/error.png'),
+  loading: require('../../assets/images/autoPic.png')
+})
 require('../../assets/js/vux-plugin.js')
 require('../../assets/css/vux.css')
 require('corlib/lib/iconfont.css')
